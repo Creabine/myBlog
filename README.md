@@ -1,6 +1,8 @@
-# myBlog-python
+# myBlog
 
 尝试写一个自己的博客，前后端都由自己起来完成，感觉是个很大的项目，准备一点一点来，功能方面也是先 从简单的开始，以后再慢慢迭代。
+后端使用 Python Django SQLite 
+前端使用 vue sass gulp 
 
 
 # V1.0.0
