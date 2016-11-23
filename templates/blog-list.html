@@ -14,11 +14,12 @@
             padding-top: 20px;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="/static/css/test.css"/>
 </head>
 <body>
 
 <div class="header">
-    <h1>My Blogs</h1>
+    <h1 id="testcss">My Blogs</h1>
 </div>
 
 {% for blog in blogs %}
@@ -29,7 +30,7 @@
         <div class="info">
             <span class="category" style="color: #ff9900;">{{ blog.category.name }}</span>
             <span class="author" style="color: #4a86e8">{{ blog.author }}</span>
-            <span class="created" style="color: #6aa84f">{{ blog.created }}</span>
+            <span class="created" style="color: #6aa84f">{{ blog.created|date:"Y-m-d H:i" }}</span>
         </div>
         <div class="summary">
             {{ blog.content|truncatewords:100 }}

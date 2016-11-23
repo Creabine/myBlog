@@ -55,8 +55,7 @@ ROOT_URLCONF = 'myBlog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,8 +118,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+# 下边这个是引用指针，不是具体的目录，可以改成任何名字，但相应的要在HTML中引入的时候使用它
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS=(
-    os.path.join(BASE_DIR,'static')
+#这里是真正的文件名，复制给一个元组，只有一个元素的元组最后要有个逗号 ‘,’
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR,'static'),
 )
