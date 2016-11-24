@@ -28,7 +28,7 @@ class Comment(models.Model):
     blog = models.ForeignKey(Blog, verbose_name='博客')
 
     name = models.CharField('称呼', max_length=16)
-    email = models.EmailField('邮箱')
+    email = models.EmailField('邮箱',max_length=32)
     content = models.CharField('内容', max_length=140)
 
     created = models.DateTimeField('发布时间', auto_now_add=True)
