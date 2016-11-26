@@ -1,0 +1,1 @@
+function test(){console.log("Hello gulp"),alert("Hello gulp!!!")}$(document).ready(function(){$("myname").click(function(l){test()})});
