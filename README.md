@@ -22,7 +22,7 @@
 
 遇到了子模块无法直接提交github的问题，[stackoverflow](http://stackoverflow.com/questions/8488887/git-error-changes-not-staged-for-commit "Title")说似乎是因为子模块的原因。要用git submodule才能提交。想了想这里不提交也没关系，最后决定用[git ignore](http://www.cnblogs.com/haiq/archive/2012/12/26/2833746.html "Title")忽略了，所以这里看不到web文件夹。
 
-**技巧：**windows下无法直接创建文件名为 .ignore 的文件，可以写为 .ignore.来创建它。
+**技巧：**windows下无法直接创建文件名为 .ignore 的文件，可以写为 .ignore. 来创建它。
 
 引入gulp，在web文件夹中构建了包含sass，compass的前端自动化工作流。实现了实时监控文件变化，自动刷新浏览器，js，css压缩以及文件分发的功能。
 
