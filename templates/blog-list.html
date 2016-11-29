@@ -3,40 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Blog list</title>
-    <style>
-        .blog {
-            padding: 20px 0px;
-        }
-        .blog .info span {
-            padding-right: 10px;
-        }
-        .blog .summary {
-            padding-top: 20px;
-        }
-    </style>
-    <link rel="stylesheet" type="text/css" href="/static/css/test.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/BlogList.css"/>
 </head>
 <body>
+	<div class="container" id="vueroot">
+		<h1>Creabine's Blog</h1>
 
-<div class="header">
-    <h1 id="testcss">My Blogs</h1>
-</div>
 
-{% for blog in blogs %}
-    <div class="blog">
-        <div class="title">
-            <a href="{% url 'blog_get_detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
-        </div>
-        <div class="info">
-            <span class="category" style="color: #ff9900;">{{ blog.category.name }}</span>
-            <span class="author" style="color: #4a86e8">{{ blog.author }}</span>
-            <span class="created" style="color: #6aa84f">{{ blog.created|date:"Y-m-d H:i" }}</span>
-        </div>
-        <div class="summary">
-            {{ blog.content|truncatewords:100 }}
-        </div>
-    </div>
-{% endfor %}
+		<div v-for='blog in BlogList' class="blog">
+			<a :href="'detail/' + blog.id"><h2 v-text="blog.title"></h2></a>
+			<p v-text="blog.author + '-' + blog.created"></p>
+			<p v-text="blog.content"></p>
+		</div>
 
+
+	</div>
+
+
+
+
+
+
+
+<script>
+/*
+	var BlogList = {
+	    "blogList": [
+	        {
+	            "categoryId": 1,
+	            "title": "Highcharts Demo",
+	            "id": 3,
+	            "author": "Creabine",
+	            "content": "fdfsdfda",
+	            "created": "2016-11-29 02:26:05"
+	        },
+	        {
+	            "categoryId": 2,
+	            "title": "Test 2",
+	            "id": 2,
+	            "author": "Creabine",
+	            "content": "gggggggggggggggggggggggg",
+	            "created": "2016-11-23 11:25:26"
+	        },
+	        {
+	            "categoryId": 2,
+	            "title": "Test 1",
+	            "id": 1,
+	            "author": "Creabine",
+	            "content": "哈哈哈",
+	            "created": "2016-11-23 11:25:05"
+	        }
+	    ]
+	}
+*/
+	var BlogList = {{ Blogs|safe }};
+</script>
+<script src="../static/js/vue.js"></script>
+<script src="../static/js/BlogList.js"></script>
 </body>
 </html>

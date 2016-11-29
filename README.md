@@ -12,9 +12,16 @@
 **以下是版本说明，按照倒序排列：**
 
 
+# V1.1.1    2016.11.29
+修改了gulp配置，调整了web文件夹下的目录结构，使得html,css,js之间的相对路径保持一致，publish之后就不用修改js，css的引用路径了；
 
+修改了后台python在blog-list页面的输出，改为json数据，输出给页面中的变量；
 
+在前端引入了vue，来显示后台输出的json数据；
 
+[输出json](http://blog.csdn.net/5iasp/article/details/23338039 "Title")
+
+[date要先格式化再转](http://www.ziqiangxuetang.com/python/datetime_strftime.html "Title")
 
 
 # V 1.1.0   2016.11.26
