@@ -12,8 +12,8 @@
 
 		<div v-for='blog in BlogList' class="blog">
 			<a :href="'detail/' + blog.id"><h2 v-text="blog.title"></h2></a>
-			<p v-text="blog.author + '-' + blog.created"></p>
-			<p v-text="blog.content"></p>
+			<p v-text="blog.author + ' ' + blog.created"></p>
+			<p v-text="blog.abstract"></p>
 		</div>
 
 
