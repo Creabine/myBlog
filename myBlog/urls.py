@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.get_blogs, name='blog_get_blogs'),
     url(r'^detail/(\d+)/$', views.get_detail, name='blog_get_detail'),
-    url(r'^ajax/$', views.get_more_blogs_by_ajax, name='get_more_blogs_by_ajax'),
+    url(r'^moreblogs/$', views.get_more_blogs_by_ajax, name='get_more_blogs_by_ajax'),
 ]

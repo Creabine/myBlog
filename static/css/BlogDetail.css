@@ -18,9 +18,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 /* main */
 .container { margin: 0 auto; width: 1000px; min-height: 800px; border: 1px red solid; }
-.container .blog { font-size: 20px; line-height: 25px; text-align: center; margin: 20px 0 0 0; }
-.container .blog h2 { color: blue; }
-.container .blog p { color: green; }
-.container .moreblog { color: red; cursor: pointer; text-align: center; }
+.container .blog { font-size: 16px; line-height: 25px; text-align: center; margin: 20px 0 0 0; }
+.container .blog h2 { color: blue; font-size: 35px; }
+.container .blog p { color: green; font-size: 20px; }
 
-/*# sourceMappingURL=BlogList.css.map */
+.comment { margin: 0 auto; margin-top: 30px; text-align: center; color: #7f8c8d; }
+.comment .commentInfo { color: #bdc3c7; font-size: 16px; }
+.comment .commentContent { color: #666; font-size: 20px; }
+
+.comment-post { padding-top: 100px; margin: 0 auto; text-align: center; }
+
+/*# sourceMappingURL=BlogDetail.css.map */

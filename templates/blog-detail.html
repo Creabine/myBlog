@@ -2,21 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ blog.title }}</title>
-    <style>
-        .blog {
-            padding: 20px 0px;
-        }
-        .blog .info span {
-            padding-right: 10px;
-        }
-        .blog .summary {
-            padding-top: 20px;
-        }
-    </style>
+    <title>Blog-detail</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/BlogDetail.css"/>
 </head>
 <body>
+    <div class="container" id="vueroot">
+        <h1>detaile</h1>
+        <div class="blog">
+            <h2>Blog title</h2>
+            <p>blog.author      blog.created</p>
+            <p>Blog content</p>
+        </div>
 
+        <div class="comment">
+            <p class="commentInfo">
+                <span>From: Who</span>
+                <span>Date: 2016-12-1   16:47</span>
+            </p>
+            <p class="commentContent">我觉得你这篇写的简直特别好</p>
+        </div>
+
+        <div class="comment-post">
+            <h3>提交评论</h3>
+            <form action="" method="post">
+                
+                    <div class="input-field" style="padding-top: 10px">
+                        称呼: <input id="id_name" maxlength="16" name="name" type="text" required="true">
+                    </div>
+                    <div class="input-field" style="padding-top: 10px">
+                        邮箱: <input id="id_name" maxlength="16" name="name" type="email" required="true">
+                    </div>
+                    <div class="input-field" style="padding-top: 10px">
+                        内容: <input id="id_name" maxlength="16" name="name" type="text" required="true">
+                    </div>
+                
+                <button type="submit" style="margin-top: 10px">提交</button>
+            </form>
+        </div>
+
+    </div>
+    
+
+<!-- 
 <div class="header">
     <span><a href="{% url 'blog_get_blogs' %}">博客</a> - <a href="{% url 'blog_get_detail' blog.id %}">{{ blog.title }}</a></span>
 </div>
@@ -61,6 +88,13 @@
         </div>
     </div>
 </div>
+ -->
+<script>
+    
 
+</script>
+<script src="/static/js/vue.js"></script>
+<script src="/static/js/vue-resource.js"></script>
+<script src="/static/js/BlogDetail.js"></script>
 </body>
 </html>

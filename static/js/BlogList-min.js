@@ -1,1 +1,1 @@
-var BlogList=new Vue({el:"#vueroot",data:{BlogList:BlogList.blogList},methods:{}});
+var BlogList=new Vue({el:"#vueroot",data:{BlogList:BlogList.blogList,isMoreBlog:!0},methods:{getMoreBlogs:function(){console.log("getmore"),this.$http({url:"moreblogs",method:"get"}).then(function(o){var t=o.body;t.blogList.length>0?this.BlogList=this.BlogList.concat(t.blogList):this.isMoreBlog=!1},function(o){console.log(o)})}}});

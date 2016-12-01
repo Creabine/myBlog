@@ -53,11 +53,8 @@ def get_more_blogs_by_ajax(request):
     start = blogListPageConfig['default_blogs'] + \
              blogListPageConfig['ajax_blogs'] * blogListPageConfig['more_blogs_count']
     end = start + blogListPageConfig['ajax_blogs']
-    #is_more用来记录后台是否还有更多的blogs
-    is_more_blog = True
     if( end >= Blog.objects.all().__len__() ):
         end = None
-        is_more = False
     blogs = Blog.objects.all().order_by('-created')[start:end]
     # 计数，该函数执行了一次
     blogListPageConfig['more_blogs_count'] += 1
@@ -73,13 +70,11 @@ def get_more_blogs_by_ajax(request):
             'abstract': item.content[:blogListPageConfig['abstract_length']],
         }
         blog_list.append(blog)
-
-    json_blog_list = {
-        #当is_more为False的时候，说明后台没有更多的blogs了
-        'is_more_blog':is_more_blog,
+    #ajax返回的response对象不用转json，由前端js来把response对象中的body转成json
+    more_blogs = {
         'blogList': blog_list
     }
-    return JsonResponse( json.dumps(json_blog_list) )
+    return JsonResponse( more_blogs )
 
 
 
