@@ -20,7 +20,7 @@ var BlogList = new Vue({
 				}
 
 		    },function(error){
-		    	console.log(error);
+		    	console.error(error);
 		    });
 		},
 	}

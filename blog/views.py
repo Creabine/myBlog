@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Blog
+from .models import Tag
+from .models import Category
 import json
 from django.core import serializers
 
@@ -12,7 +14,7 @@ import time
 
 blogListPageConfig = {
     #blog首页打开时默认显示n条
-    'default_blogs': 2,
+    'default_blogs': 3,
     #ajax请求更多blog时，一次请求返回n条
     'ajax_blogs':1,
     #执行了几次get_more_blogs_by_ajax
@@ -25,7 +27,7 @@ def reset_blog_list_page_config():
 
 
 def get_blogs(request):
-    reset_blog_list_page_config()
+
     # 取得打开页面要默认显示的那几条博客
     blogs = Blog.objects.all().order_by('-created')[:blogListPageConfig['default_blogs']]
     #声明一个list来放置要首页默认显示的blogs
@@ -77,24 +79,56 @@ def get_more_blogs_by_ajax(request):
     return JsonResponse( more_blogs )
 
 
-
 def get_detail(request, blog_id):
+    reset_blog_list_page_config()
     try:
         blog = Blog.objects.get(id=blog_id)
     except Blog.DoesNotExist:
         raise Http404
-
+    #判断请求方法，若是post，存入数据库
     if request.method == 'GET':
         form = CommentForm()
     else:
         form = CommentForm(request.POST)
         if form.is_valid():
             cleaned_data = form.cleaned_data
-            cleaned_data['blog'] = blog
+            cleaned_data['blog_id'] = blog_id
             Comment.objects.create(**cleaned_data)
-    ctx = {
-        'blog': blog,
-        'comments': blog.comment_set.all().order_by('-created'),
-        'form': form
+    #取得detail页面相关信息并返回
+    #得到blog的tags构成的tag_list
+    tags = blog.tags.all()
+    tag_list = []
+    for tag in tags:
+        tag_dict = {
+            'id':tag.id,
+            'name':tag.name
+        }
+        tag_list.append(tag_dict)
+    #得到blog的comment构成的comment_list
+    comments = blog.comment_set.all()
+    comments_list = []
+    for comment in comments:
+        comment_dict = {
+            'id': comment.id,
+            'name': comment.name,
+            'content': comment.content,
+            'created': comment.created.strftime("%Y-%m-%d %H:%M:%S"),
+        }
+        comments_list.append(comment_dict)
+    aaa = blog.created.astimezone()
+    blog_info = {
+        'id': blog.id,
+        'title': blog.title,
+        'author': blog.author,
+        'created': blog.created.strftime("%Y-%m-%d %H:%M:%S"),
+        'content': blog.content,
+        'category':{
+            'categoryId': blog.category_id,
+            'categoryName': blog.category.name
+        },
+        'tags':tag_list,
+        'comments':comments_list
     }
-    return render(request, 'blog-detail.html', ctx)
+    return render(request, 'blog-detail.html', {
+        'blogDetail':json.dumps(blog_info),
+    })
