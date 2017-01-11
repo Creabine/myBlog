@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog-detail</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/BlogDetail.css"/>
+</head>
+<body>
+    <div class="container" id="vueroot">
+        <h1><a href="/">back to list</a></h1>
+        <div class="blog">
+            <h2 v-text="blogDetail.title"></h2>
+            <p v-text="blogDetail.author + ' & ' + blogDetail.created"></p>
+            <p v-text="blogDetail.content"></p>
+        </div>
+
+        <div v-for="comment in blogDetail.comments" class="comment">
+            <p class="commentInfo">
+                <span v-text="'Form:'+comment.name"></span>
+                <span v-text="'Date:'+comment.created"></span>
+            </p>
+            <p class="commentContent" v-text="comment.content"></p>
+        </div>
+
+        <div class="comment-post">
+            <h3>提交评论</h3>
+            	<form method="post">
+            		{% csrf_token %}
+	                <div class="input-field" style="padding-top: 10px">
+	                    称呼: <input maxlength="16" name="name" type="text" required="true" v-model="newComment.name">
+	                </div>
+	                <div class="input-field" style="padding-top: 10px">
+	                    邮箱: <input maxlength="32" name="email" type="email" required="true" v-model="newComment.email">
+	                </div>
+	                <div class="input-field" style="padding-top: 10px">
+	                    内容: <input maxlength="144" name="content" type="text" required="true" v-model="newComment.content">
+	                </div>
+	                <button type="submit" style="margin-top: 10px">提交</button>
+           		</form>
+        </div>
+
+    </div>
+ 
+<script>
+/*
+var blogDetail = {
+    "content": "fdfsdfdafdfsdfdafdfsdfdafdfsdfdafdfsdfdafdfsdfdafdfsdfda",
+    "id": 3,
+    "author": "Creabine",
+    "category": {
+        "categoryName": "category_1",
+        "categoryId": 1
+    },
+    "comments": [
+        {
+            "content": "请点此安装",
+            "id": 6,
+            "created": "2016-26-11/29/16 02:26:29",
+            "name": "test"
+        },
+        {
+            "content": "请点此安装",
+            "id": 7,
+            "created": "2016-26-11/29/16 02:26:31",
+            "name": "test"
+        },
+        {
+            "content": "请点此安装",
+            "id": 8,
+            "created": "2016-26-11/29/16 02:26:32",
+            "name": "test"
+        },
+        {
+            "content": "请点此安装",
+            "id": 9,
+            "created": "2016-26-11/29/16 02:26:35",
+            "name": "test"
+        }
+    ],
+    "created": "2016-11-29 02:26:05",
+    "tags": [
+        {
+            "id": 2,
+            "name": "tag_2"
+        }
+    ],
+    "title": "Highcharts Demo"
+}
+*/
+
+    var blogDetail = {{ blogDetail|safe }}
+
+</script>
+<script src="/static/js/vue.js"></script>
+<script src="/static/js/vue-resource.js"></script>
+<script src="/static/js/BlogDetail.js"></script>
+</body>
+</html>

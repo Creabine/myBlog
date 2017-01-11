@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* reset */
+@import "compass/reset";
+//css3
+@import "compass/css3";
+//变量
+$text_border: 1px red solid;
+
+/* main */
+.container{
+	margin:0 auto;
+	width:1000px;
+	min-height:800px;
+	border:$text_border;
+	h1{
+		font-size: 25px;
+		color: red;
+		padding:20px 0 0 50px;
+		cursor: pointer;
+	}
+	.blog{
+		font-size: 16px;
+		line-height: 25px;
+		text-align: center;
+		margin:20px 0 0 0;
+		h2{
+			color: blue;
+			font-size: 35px;
+		}
+		p{
+			color: green;
+			font-size: 20px;
+		}
+	}
+}
+.comment{
+	margin:0 auto;
+	margin-top:30px;
+	text-align:center;
+	color:#7f8c8d;
+	.commentInfo{
+		color:#bdc3c7;
+		font-size: 16px;
+	}
+	.commentContent{
+		color: #666;
+		font-size: 20px;
+	}
+}
+.comment-post{
+	padding-top: 100px;
+	margin:0 auto;
+	text-align:center;
+}

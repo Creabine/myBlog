@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog list</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/BlogList.css"/>
+</head>
+<body>
+	<div class="container" id="vueroot">
+		<h1>Creabine's Blog</h1>
+
+
+		<div v-for='blog in BlogList' class="blog">
+			<a :href="'blogDetail&id=' + blog.id"><h2 v-text="blog.title"></h2></a>
+			<p v-text="blog.author + '-' + blog.created"></p>
+			<p v-text="blog.abstract"></p>
+		</div>
+		<p v-show="isMoreBlog == true" class="moreblog" @click="getMoreBlogs()">more blogs</p>
+	
+
+	</div>
+
+
+
+
+
+
+
+<script>
+/*
+	var BlogList = {
+	    "blogList": [
+	        {
+	            "categoryId": 1,
+	            "title": "Highcharts Demo",
+	            "id": 3,
+	            "author": "Creabine",
+	            "content": "fdfsdfda",
+	            "created": "2016-11-29 02:26:05"
+	        },
+	        {
+	            "categoryId": 2,
+	            "title": "Test 2",
+	            "id": 2,
+	            "author": "Creabine",
+	            "content": "gggggggggggggggggggggggg",
+	            "created": "2016-11-23 11:25:26"
+	        },
+	        {
+	            "categoryId": 2,
+	            "title": "Test 1",
+	            "id": 1,
+	            "author": "Creabine",
+	            "content": "哈哈哈",
+	            "created": "2016-11-23 11:25:05"
+	        }
+	    ]
+	}
+*/
+	var BlogList = {{ Blogs|safe }};
+</script>
+<script src="/static/js/vue.js"></script>
+<script src="/static/js/vue-resource.js"></script>
+<script src="/static/js/BlogList.js"></script>
+</body>
+</html>
